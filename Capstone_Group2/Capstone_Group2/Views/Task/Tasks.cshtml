@@ -1,0 +1,61 @@
+﻿@model List<TaskViewModel>
+@{
+    ViewData["Title"] = "Current Tasks List";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="~/css/tableStyles.css" />
+
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Select Task Type
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a asp-controller="Task" asp-action="GetTaskByCategory" class="dropdown-item"  asp-route-categoryId="1">School</a></li>
+        <li><a asp-controller="Task" asp-action="GetTaskByCategory" class="dropdown-item"  asp-route-categoryId="2">Work</a></li>
+        <li><a asp-controller="Task" asp-action="GetTaskByCategory" class="dropdown-item"  asp-route-categoryId="3">Personal</a></li>
+    </ul>
+</div>
+<div class="container mt-5">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Task Category</th>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model)
+            {
+                <tr>
+                    <td>@task.Category.CategoryName</td>
+                    <td>@task.TaskName</td>
+                    <td>@task.TaskDescription</td>
+                    <td>@task.Start_Date.ToString()</td>
+                    <td>@task.End_Date.ToString()</td>
+                    <td>@task.Status.StatusName</td>
+                    <td style="text-align: center">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-primary" asp-controller="Task" asp-action="GetEditRequestById" asp-route-TaskId="@task.TaskId"><i class="fas fa-edit"></i></a>
+                            <span class="mx-1">|</span>
+                            <a class="btn btn-primary" asp-controller="Task" asp-action="GetDeleteRequestById" asp-route-id="@task.TaskId"><i class="fas fa-trash-alt"></i></a>
+                            <span class="mx-1">|</span>
+                            <a class="btn btn-primary" asp-controller="Task" asp-action="GetTaskById" asp-route-id="@task.TaskId"><i class="fas fa-info-circle"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,63 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container-fluid">
+        <div class="row">
+            <!-- Description -->
+            <div class="col-md-6 p-0 description-area">
+           
+            <h1>Use Timewize <br>to manage your <br />time wisely</h1>
+            <div class="logo">
+                <img src="/images/Logo_Circle2.png" alt="TimeWize Logo" style="height: 120px; width: 125px" />
+            </div>
+            </br>
+            </br>
+                <p>Timewize provides a simple and convinient way to manage your tasks.</p>
+            </div>
+            <!-- Register Form -->
+            <div class="col-md-5 p-0 register-area">
+                <div class="d-flex align-items-center h-100 p-5 justify-content-center">
+                <form asp-controller="Account" asp-action="Register" method="post">
+                    <h1>Getting Started Now!</h1>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    
+                    <div class="form-group">
+                        <label asp-for="Username"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword"></label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+
+                    <div class="form-group">Already registered? <a asp-action="LogIn"> Log In</a></div>
+                </form>
+                </div>
+            </div>
+
+        
+
+        </div>
+    </div>
+
+

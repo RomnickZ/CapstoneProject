@@ -1,0 +1,226 @@
+﻿
+/* styles for login/register page */
+
+.logo {
+    margin-left: 7em;
+    padding-top: 1em;
+}
+
+.login-area {
+    background-color: white;
+    padding: 40px;
+    margin-top: 5em;
+    margin-left: 4em;
+    border-radius: 9px;
+    box-shadow: 10px 10px;
+    color: black;
+}
+
+    .login-area button {
+        background-color: #06c9c0;
+    }
+
+.register-area {
+    background-color: white;
+    padding: 40px;
+    margin-top: 5em;
+    margin-left: 4em;
+    border-radius: 9px;
+    box-shadow: 10px 10px;
+    color: black;
+}
+
+    .register-area button {
+        background-color: #06c9c0;
+    }
+
+.description-area {
+    background-color: #14223d;
+    color: #ffffff;
+    padding: 40px;
+}
+
+    .description-area h1 {
+        padding-left: 3em;
+        padding-top: 3em;
+    }
+
+    .description-area p {
+        margin-top: -20px;
+        padding-left: 6.7em;
+        font-size: 18px;
+    }
+
+
+
+
+
+body {
+    background-color: #14223d;
+    color: white;
+}
+
+
+
+
+.form-group {
+    margin-bottom: 13px;
+}
+
+
+/* style for Timewise on navbar */
+.navbar-brand {
+    font-family: "TimeWize", 'Bauhaus 93';
+    font-size: 32px;
+}
+
+th {
+    color: white;
+    font-family: 'MV Boli';
+    font-size: 18px;
+}
+
+td {
+    color: white;
+}
+
+/* styles for About view */
+
+.aboutH1 {
+    text-align: center;
+    font-family: 'Global Sans Serif';
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contactus {
+    color: white;
+    text-align: center;
+    font-family: 'MV Boli';
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* styles for delete page */
+
+.confirmation-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 10px 10px;
+    color: black;
+    max-width: 400px;
+    margin: 0 auto;
+    color: #000;
+}
+
+.button-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    margin-left: 10px;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+
+/* styles for details page */
+
+.task-details-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 10px 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #000;
+    position: relative;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-weight: bold;
+    width: 150px;
+}
+
+.detail-value {
+    flex: 1;
+}
+
+.btn-back {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #6c757d;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+
+/*About Img*/
+.box-container {
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.box {
+    flex: 0 0 calc(33.333% - 20px);
+    margin: 10px; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+}
+
+.image-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+    .image-container img {
+        width: 55%;
+        height: 200px;
+        border-radius: 5px;
+    }

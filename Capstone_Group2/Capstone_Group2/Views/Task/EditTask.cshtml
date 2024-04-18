@@ -1,0 +1,80 @@
+﻿@model TimetableTask
+
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Task" asp-action="ProcessEditRequestById" asp-route-TaskId="@Model.TaskId" method="post" enctype="application/x-www-form-urlencoded">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="TaskId" />
+
+    <div class="form-group">
+        <label asp-for="TaskName"></label>
+        <input asp-for="TaskName" class="form-control" />
+        <span asp-validation-for="TaskName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId">Task Category</label>
+        <select asp-for="CategoryId" class="form-control">
+            <!-- Populate options for categories -->
+            <option value="1">School</option>
+            <option value="2">Work</option>
+            <option value="3">Personal</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TaskDescription"></label>
+        <input asp-for="TaskDescription" class="form-control" />
+        <span asp-validation-for="TaskDescription" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Start_Date"></label>
+        <input asp-for="Start_Date" type="datetime-local" class="form-control" />
+        <span asp-validation-for="Start_Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="End_Date"></label>
+        <input asp-for="End_Date" type="datetime-local" class="form-control" />
+        <span asp-validation-for="End_Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PriorityId">Priority Type</label>
+        <select asp-for="PriorityId" class="form-control">
+            <!-- Populate options for priorities -->
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+        </select>
+        <span asp-validation-for="PriorityId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StatusId">Status Type</label>
+        <select asp-for="StatusId" class="form-control">
+            <!-- Populate options for statuses -->
+            <option value="1">Not Done</option>
+
+            @*Due Soon status is not enabled for user input*@
+            @*<option value="2">Due Soon</option>*@
+            <option value="3">Finished</option>
+        </select>
+        <span asp-validation-for="StatusId" class="text-danger"></span>
+    </div>
+
+    <form asp-controller="Task" asp-action="ProcessEditRequestById" asp-route-id="@Model.TaskId" class="button-form" method="post" enctype="application/x-www-form-urlencoded">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+        <a asp-controller="Task" asp-action="GetAllTasks" class="btn btn-primary"><i class="fas fa-times"></i> Cancel</a>
+    </form>
+</form>

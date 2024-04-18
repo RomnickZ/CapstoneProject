@@ -1,0 +1,52 @@
+﻿@model List<dynamic>
+
+@{
+    ViewData["Title"] = "Calendar";
+}
+
+<h2>Weekly Calendar</h2>
+
+<div id="calendar"></div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.global.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.js"></script>
+
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                events: {
+                    url: '@Url.Action("GetEvents", "Calendar")',
+                    method: 'GET'
+                },
+                eventContent: function (arg) {
+                    return {
+                        html: '<b>' + arg.event.title + '</b>: ' +
+                            arg.event.extendedProps.category + '<br/>' +
+                            arg.event.extendedProps.status,
+                    };
+                },
+                eventDidMount: function (info) {
+                    var priorityColor;
+                    switch (info.event.extendedProps.priorityId) {
+                        case 1: // Low
+                            priorityColor = 'blue';
+                            break;
+                        case 2: // Medium
+                            priorityColor = 'orange';
+                            break;
+                        case 3: // High
+                            priorityColor = 'crimson';
+                            break;
+                    }
+                    info.el.style.backgroundColor = priorityColor;
+                }
+            });
+            calendar.render();
+        });
+    </script>
+}

@@ -1,0 +1,68 @@
+﻿@model List<TaskViewModel>
+@using Capstone_Group2.Entities;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    // Get the start and end dates for the current week
+    var startOfWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
+    var endOfWeek = startOfWeek.AddDays(7).AddSeconds(-1);
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Timewize</h1>
+</div>
+
+<div class="container mt-5">
+    <h3>This Week @(startOfWeek.ToString("MMM dd")) - @(endOfWeek.ToString("MMM dd")) Tasks</h3>
+    <a asp-action="GetAllTasks" asp-controller="Task">Go to the Task Page</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Task Category</th>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model)
+            {
+                string priorityColor = "";
+
+                if (task != null && task.Priority != null)
+                {
+                    int priorityId = task.Priority.PriorityId;
+
+                    if (priorityId == 1)
+                    {
+                        priorityColor = "blue";
+                    }
+                    else if (priorityId == 2)
+                    {
+                        priorityColor = "orange";
+                    }
+                    else if (priorityId == 3)
+                    {
+                        priorityColor = "crimson";
+                    }
+                }
+
+                <tr style="background-color: @priorityColor">
+                    <td>@(task?.Category?.CategoryName)</td>
+                    <td>@(task?.TaskName)</td>
+                    <td>@(task?.TaskDescription)</td>
+                    <td>@(task?.Start_Date.ToString())</td>
+                    <td>@(task?.End_Date.ToString())</td>
+                    <td>@(task?.Status?.StatusName)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,47 @@
+﻿@model List<TaskViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Timewize</h1>
+</div>
+
+<div class="container mt-5">
+    <h1>This Week's Tasks</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Task Category</th>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model)
+            {
+                    <tr>
+                        <td>@task.Category.CategoryName</td>
+                        <td>@task.TaskName</td>
+                        <td>@task.TaskDescription</td>
+                        <td>@task.Start_Date.ToString()</td>
+                        <td>@task.End_Date.ToString()</td>
+                        <td>@task.Status.StatusName</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-primary">Edit</button>
+                                <button type="button" class="btn btn-primary">Delete</button>
+                                <button type="button" class="btn btn-primary">Details</button>
+                            </div>
+                        </td>
+                    </tr>
+
+            }
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,102 @@
+﻿@model TimetableTask
+
+@{
+    ViewData["Title"] = "Task Details";
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+}
+
+<div class="task-details-container">
+    <a asp-controller="Task" asp-action="GetAllTasks" class="btn-secondary btn-back"><i class="fas fa-arrow-left"></i> Back to Tasks</a>
+
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="detail-row">
+        <div class="detail-label">Task Name:</div>
+        <div class="detail-value">@Model.TaskName</div>
+    </div>
+
+    <div class="detail-row">
+        <div class="detail-label">Task Category:</div>
+        <div class="detail-value">
+            @{
+                if (Model.CategoryId == 1)
+                {
+                    <span>School</span>
+                    ;
+                }
+                else if (Model.CategoryId == 2)
+                {
+                    <span>Work</span>
+                    ;
+                }
+                else
+                {
+                    <span>Personal</span>
+                    ;
+                }
+            }
+        </div>
+    </div>
+
+    <div class="detail-row">
+        <div class="detail-label">Task Description:</div>
+        <div class="detail-value">@Model.TaskDescription</div>
+    </div>
+
+    <div class="detail-row">
+        <div class="detail-label">Start Date:</div>
+        <div class="detail-value">@Model.Start_Date.ToString()</div>
+    </div>
+
+    <div class="detail-row">
+        <div class="detail-label">End Date:</div>
+        <div class="detail-value">@Model.End_Date.ToString()</div>
+    </div>
+
+    <div class="detail-row">
+        <div class="detail-label">Priority Type:</div>
+        <div class="detail-value">
+            @{
+                if (Model.PriorityId == 1)
+                {
+                    <span>Low</span>
+                    ;
+                }
+                else if (Model.PriorityId == 2)
+                {
+                    <span>Medium</span>
+                    ;
+                }
+                else
+                {
+                    <span>High</span>
+                    ;
+                }
+            }
+        </div>
+    </div>
+
+    <div class="detail-row">
+        <div class="detail-label">Status Type:</div>
+        <div class="detail-value">
+            @{
+                if (Model.StatusId == 1)
+                {
+                    <span>Not Done</span>
+                    ;
+                }
+                else if (Model.StatusId == 2)
+                {
+                    <span>Due Soon</span>
+                    ;
+                }
+                else
+                {
+                    <span>Finished</span>
+                    ;
+                }
+            }
+        </div>
+    </div>
+</div>
